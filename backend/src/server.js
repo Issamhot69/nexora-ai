@@ -4,6 +4,9 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const authRoutes = require('./routes/auth');
 const organizationsRoutes = require('./routes/organizations');
+const companiesRoutes = require('./routes/companies');
+const contactsRoutes = require('./routes/contacts');
+const dealsRoutes = require('./routes/deals');
 
 const app = express();
 
@@ -17,6 +20,9 @@ app.get('/', (req, res) => {
 const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 20, message: { error: 'Trop de tentatives, reessayez plus tard' } });
 app.use('/auth', authLimiter, authRoutes);
 app.use('/organizations', organizationsRoutes);
+app.use(companiesRoutes);
+app.use(contactsRoutes);
+app.use(dealsRoutes);
 
 const PORT = process.env.PORT || 4095;
 app.listen(PORT, () => {
