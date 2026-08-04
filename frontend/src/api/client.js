@@ -38,3 +38,15 @@ export const api = {
   updateDeal: (id, body) => request(`/deals/${id}`, { method: 'PUT', body: JSON.stringify(body) }),
   deleteDeal: (id) => request(`/deals/${id}`, { method: 'DELETE' }),
 };
+
+Object.assign(api, {
+  listQuotes: (orgId) => request(`/organizations/${orgId}/quotes`),
+  createQuote: (orgId, body) => request(`/organizations/${orgId}/quotes`, { method: 'POST', body: JSON.stringify(body) }),
+  updateQuoteStatus: (id, status) => request(`/quotes/${id}/status`, { method: 'PUT', body: JSON.stringify({ status }) }),
+  deleteQuote: (id) => request(`/quotes/${id}`, { method: 'DELETE' }),
+
+  listInvoices: (orgId) => request(`/organizations/${orgId}/invoices`),
+  createInvoice: (orgId, body) => request(`/organizations/${orgId}/invoices`, { method: 'POST', body: JSON.stringify(body) }),
+  updateInvoiceStatus: (id, status) => request(`/invoices/${id}/status`, { method: 'PUT', body: JSON.stringify({ status }) }),
+  deleteInvoice: (id) => request(`/invoices/${id}`, { method: 'DELETE' }),
+});
