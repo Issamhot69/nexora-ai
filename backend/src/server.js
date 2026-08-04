@@ -9,6 +9,9 @@ const contactsRoutes = require('./routes/contacts');
 const dealsRoutes = require('./routes/deals');
 const quotesRoutes = require('./routes/quotes');
 const invoicesRoutes = require('./routes/invoices');
+const productsRoutes = require('./routes/products');
+const warehousesRoutes = require('./routes/warehouses');
+const stockRoutes = require('./routes/stock');
 
 const app = express();
 
@@ -27,6 +30,9 @@ app.use(contactsRoutes);
 app.use(dealsRoutes);
 app.use(quotesRoutes);
 app.use(invoicesRoutes);
+app.use(productsRoutes);
+app.use(warehousesRoutes);
+app.use(stockRoutes);
 
 const PORT = process.env.PORT || 4095;
 app.listen(PORT, () => {
